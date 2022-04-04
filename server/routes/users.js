@@ -6,6 +6,11 @@ const bcrypt = require("bcrypt");
 
 //update
 router.put("/:id", async (req, res) => {
+  console.log("UPDATE TRIGERED");
+  console.log(req.body.userId);
+  console.log(req.params.id);
+  console.log(req.body.password);
+
   if (req.body.userId === req.params.id) {
     if (req.body.password) {
       const salt = await bcrypt.genSalt(10);
@@ -13,19 +18,18 @@ router.put("/:id", async (req, res) => {
     }
     try {
       const updatedUser = await User.findByIdAndUpdate(
-        req.body.userId,
+        req.params.id,
         {
           $set: req.body,
         },
         { new: true }
       );
-
       res.status(200).json(updatedUser);
     } catch (err) {
       res.status(500).json(err);
     }
   } else {
-    res.status(401).json("Not found");
+    res.status(401).json("You can update only your account!");
   }
 });
 

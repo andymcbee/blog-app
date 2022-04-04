@@ -1,0 +1,59 @@
+.CommentNew {
+  flex: 9;
+  margin-top: 25px;
+}
+
+.newCommentTitle {
+  border-top: 1px solid rgb(206, 206, 206);
+  font-family: "Lora", serif;
+
+  padding-left: 20px;
+
+  margin: 20px;
+}
+.newCommentWrapper {
+  padding: 20px;
+  padding-right: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.authorNameInput {
+  margin: 10px;
+  font-family: "Lora", serif;
+  font-size: 28px;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  color: rgb(75, 75, 75);
+}
+
+.authorNameInput:focus {
+  outline: none;
+}
+
+.newCommentInput {
+  color: 665;
+  font-size: 18px;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  color: rgb(75, 75, 75);
+  resize: none;
+}
+
+.newCommentInput:focus {
+  outline: none;
+}
+
+.newCommentButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.postCommentButton {
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+}

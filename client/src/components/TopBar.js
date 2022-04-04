@@ -1,11 +1,17 @@
 import "./topBar.css";
-import userHeadshot from "../images/andrew_headshot.jpg";
 import { Link } from "react-router-dom";
-
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { Context } from "../context/Context";
 
 export default function Nav() {
-  const user = false;
+  const { user, dispatch } = useContext(Context);
+  const PF = "http://localhost:5000/images/";
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch({ type: "LOGOUT" });
+  };
+
   return (
     <div className="top">
       <div className="topLeft">
@@ -37,7 +43,7 @@ export default function Nav() {
           </li>
           {user && (
             <li className="topListItem">
-              <Link className="link" to="/logout">
+              <Link className="link" to="/logout" onClick={handleLogout}>
                 Logout
               </Link>
             </li>
@@ -46,7 +52,13 @@ export default function Nav() {
       </div>
       <div className="topRight">
         {user ? (
-          <img className="topImg" src={userHeadshot} alt="Headshot of User" />
+          <Link to="/settings">
+            <img
+              className="topImg"
+              src={PF + user.profilePic}
+              alt="Headshot of User"
+            />
+          </Link>
         ) : (
           <ul className="topList">
             <li className="topListItem">

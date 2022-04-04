@@ -1,26 +1,29 @@
 import React from "react";
 import userHeadshot from "../images/andrew_headshot.jpg";
 import "./post.css";
+import { Link } from "react-router-dom";
 
-export default function Post() {
+export default function Post({ post }) {
+  const PF = "http://localhost:5000/images/";
+
   return (
     <div className="Post">
-      <img className="postImg" src={userHeadshot} alt="" />
+      {post.photo && <img className="postImg" src={PF + post.photo} alt="" />}
       <div className="postInfo">
         <div className="postCats">
-          <span className="postCat">Music</span>
-          <span className="postCat">Life</span>
+          {post.categories.map((c) => {
+            return <span className="postCat">{c.name}</span>;
+          })}
         </div>
-        <span className="postTitle">Lorem Ipsum dolor</span>
+        <Link to={`/post/${post._id}`} className="link">
+          <span className="postTitle">{post.title}</span>
+        </Link>
         <hr />
-        <span className="postDate">1 hour ago</span>
+        <span className="postDate">
+          {new Date(post.createdAt).toDateString()}
+        </span>
       </div>
-      <p className="postDesc">
-        Loreum,, ipsum post desc text here. Loreum,, ipsum post desc text here.
-        Loreum,, ipsum post desc text here. Loreum,, ipsum post desc text here.
-        Loreum,, ipsum post desc text here. Loreum,, ipsum post desc text here.
-        Loreum,, ipsum post desc text here.{" "}
-      </p>
+      <p className="postDesc">{post.desc}</p>
     </div>
   );
 }
