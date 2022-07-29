@@ -3,6 +3,7 @@ import userHeadshot from "../images/andrew_headshot.jpg";
 import "./post.css";
 import { Link } from "react-router-dom";
 
+
 export default function Post({ post }) {
   const PF = "http://localhost:5000/images/";
 
